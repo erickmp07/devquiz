@@ -23,6 +23,12 @@ To set up your editor, read [this](https://flutter.dev/docs/get-started/editor?t
 git clone https://github.com/erickmp07/devquiz.git
 ```
 
+- Install its dependencies:
+```bash
+cd devquiz
+flutter pub get
+```
+
 ## Usage
 
 To run the mobile app, connect a smartphone by USB or run an emulator. For further information, read [this](https://flutter.dev/docs/get-started/test-drive?tab=vscode).
