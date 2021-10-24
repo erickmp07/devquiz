@@ -29,7 +29,7 @@ class QuizCardWidget extends StatelessWidget {
             style: AppTextStyles.heading15,
           ),
           SizedBox(
-            height: 24,
+            height: 40,
           ),
           Row(
             children: [
@@ -41,7 +41,7 @@ class QuizCardWidget extends StatelessWidget {
                 ),
               ),
               Expanded(
-                flex: 4,
+                flex: 2,
                 child: LinearProgressIndicator(
                   value: 0.3,
                   backgroundColor: AppColors.chartSecondary,
