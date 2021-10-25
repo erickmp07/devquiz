@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:DevQuiz/core/app_images.dart';
 import 'package:DevQuiz/shared/enums/extensions/level_extension.dart';
 import 'package:DevQuiz/shared/enums/extensions/level_string_extension.dart';
 import 'package:DevQuiz/shared/enums/level_enum.dart';
@@ -35,7 +36,7 @@ class QuizModel {
         questions: List<QuestionModel>.from(map["questions"]
             ?.map((question) => QuestionModel.fromMap(question))),
         questionsAnswered: map["questionsAnswered"],
-        image: map["image"],
+        image: AppImages.getImageByName(map["image"]),
         level: map["level"].toString().parse);
   }
 
