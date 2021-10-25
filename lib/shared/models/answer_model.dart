@@ -11,7 +11,7 @@ class AnswerModel {
   }
 
   factory AnswerModel.fromMap(Map<String, dynamic> map) {
-    return AnswerModel(title: map["title"], isRight: map["isRight"]);
+    return AnswerModel(title: map["title"], isRight: map["isRight"] ?? false);
   }
 
   String toJson() => json.encode(toMap());
