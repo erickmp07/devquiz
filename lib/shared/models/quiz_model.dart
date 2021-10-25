@@ -36,7 +36,7 @@ class QuizModel {
             ?.map((question) => QuestionModel.fromMap(question))),
         questionsAnswered: map["questionsAnswered"],
         image: map["image"],
-        level: map["level"].toString().levelParse);
+        level: map["level"].toString().parse);
   }
 
   String toJson() => json.encode(toMap());
