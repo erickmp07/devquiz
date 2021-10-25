@@ -1,0 +1,26 @@
+{
+    "title": "State Management",
+    "image": "blocks",
+    "questionsAnswered": 0,
+    "level": "easy",
+    "questions": [
+        {
+            "title": "What does Flutter do in its entirety?",
+            "answers": [
+                {
+                    "title": "Enables the creation of natively compiled applications"
+                },
+                {
+                    "title": "Enables the creation of natively compiled applications"
+                },
+                {
+                    "title": "Enables the creation of natively compiled applications"
+                },
+                {
+                    "title": "Enables the creation of natively compiled applications",
+                    "isRight": true
+                }
+            ]
+        }
+    ]
+}
