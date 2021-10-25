@@ -3,5 +3,5 @@ class UserModel {
   final String photoUrl;
   final double score;
 
-  UserModel({required this.name, required this.photoUrl, required this.score});
+  UserModel({required this.name, required this.photoUrl, this.score = 0.0});
 }
