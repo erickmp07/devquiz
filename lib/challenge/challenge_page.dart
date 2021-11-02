@@ -7,6 +7,7 @@ import 'package:DevQuiz/shared/models/question_model.dart';
 
 class ChallengePage extends StatefulWidget {
   final List<QuestionModel> questions;
+
   const ChallengePage({Key? key, required this.questions}) : super(key: key);
 
   @override
@@ -24,6 +25,13 @@ class _ChallengePageState extends State<ChallengePage> {
     });
 
     super.initState();
+  }
+
+  void nextPage() {
+    pageController.nextPage(
+      duration: Duration(milliseconds: 100),
+      curve: Curves.linear,
+    );
   }
 
   @override
@@ -56,36 +64,40 @@ class _ChallengePageState extends State<ChallengePage> {
         physics: NeverScrollableScrollPhysics(),
         controller: pageController,
         children: widget.questions
-            .map((question) => QuizWidget(question: question))
+            .map((question) => QuizWidget(
+                  question: question,
+                  onChange: nextPage,
+                ))
             .toList(),
       ),
       bottomNavigationBar: SafeArea(
         bottom: true,
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              Expanded(
-                  child: NextButtonWidget.white(
-                label: "Skip",
-                onTap: () {
-                  pageController.nextPage(
-                    duration: Duration(milliseconds: 100),
-                    curve: Curves.linear,
-                  );
-                },
-              )),
-              SizedBox(
-                width: 7,
-              ),
-              Expanded(
-                  child: NextButtonWidget.green(
-                label: "Confirm",
-                onTap: () {},
-              ))
-            ],
-          ),
+          child: ValueListenableBuilder<int>(
+              valueListenable: challengeController.currentPageNotifier,
+              builder: (context, value, _) => Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Expanded(
+                          child: NextButtonWidget.white(
+                        label: "Skip",
+                        onTap: nextPage,
+                      )),
+                      if (value == widget.questions.length)
+                        SizedBox(
+                          width: 7,
+                        ),
+                      if (value == widget.questions.length)
+                        Expanded(
+                            child: NextButtonWidget.green(
+                          label: "Confirm",
+                          onTap: () {
+                            Navigator.pop(context);
+                          },
+                        ))
+                    ],
+                  )),
         ),
       ),
     );
