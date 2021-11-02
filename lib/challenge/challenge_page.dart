@@ -38,6 +38,14 @@ class _ChallengePageState extends State<ChallengePage> {
       );
   }
 
+  void onSelected(bool value) {
+    if (value) {
+      challengeController.correctAnswersCount++;
+    }
+
+    nextPage();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -70,7 +78,7 @@ class _ChallengePageState extends State<ChallengePage> {
         children: widget.questions
             .map((question) => QuizWidget(
                   question: question,
-                  onChange: nextPage,
+                  onSelected: onSelected,
                 ))
             .toList(),
       ),
@@ -99,6 +107,10 @@ class _ChallengePageState extends State<ChallengePage> {
                                 MaterialPageRoute(
                                     builder: (context) => ResultPage(
                                           title: widget.title,
+                                          length: widget.questions.length,
+                                          correctAnswersCount:
+                                              challengeController
+                                                  .correctAnswersCount,
                                         )));
                           },
                         ))

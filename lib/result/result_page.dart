@@ -1,12 +1,19 @@
+import 'package:flutter/material.dart';
 import 'package:DevQuiz/challenge/widgets/next_button/next_button_widget.dart';
 import 'package:DevQuiz/core/app_images.dart';
-import 'package:flutter/material.dart';
 import 'package:DevQuiz/core/app_text_styles.dart';
 
 class ResultPage extends StatelessWidget {
   final String title;
+  final int length;
+  final int correctAnswersCount;
 
-  const ResultPage({Key? key, required this.title}) : super(key: key);
+  const ResultPage(
+      {Key? key,
+      required this.title,
+      required this.length,
+      required this.correctAnswersCount})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +43,8 @@ class ResultPage extends StatelessWidget {
                         TextSpan(
                             text: "\n$title", style: AppTextStyles.bodyBold),
                         TextSpan(
-                            text: "\nwith 6 correct answers out of 10",
+                            text:
+                                "\nwith $correctAnswersCount correct answers out of $length",
                             style: AppTextStyles.body),
                       ]),
                   textAlign: TextAlign.center,
