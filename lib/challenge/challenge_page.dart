@@ -8,8 +8,10 @@ import 'package:DevQuiz/shared/models/question_model.dart';
 
 class ChallengePage extends StatefulWidget {
   final List<QuestionModel> questions;
+  final String title;
 
-  const ChallengePage({Key? key, required this.questions}) : super(key: key);
+  const ChallengePage({Key? key, required this.questions, required this.title})
+      : super(key: key);
 
   @override
   _ChallengePageState createState() => _ChallengePageState();
@@ -92,10 +94,12 @@ class _ChallengePageState extends State<ChallengePage> {
                             child: NextButtonWidget.green(
                           label: "Confirm",
                           onTap: () {
-                            Navigator.push(
+                            Navigator.pushReplacement(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => ResultPage()));
+                                    builder: (context) => ResultPage(
+                                          title: widget.title,
+                                        )));
                           },
                         ))
                     ],

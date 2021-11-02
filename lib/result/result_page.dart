@@ -4,7 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:DevQuiz/core/app_text_styles.dart';
 
 class ResultPage extends StatelessWidget {
-  const ResultPage({Key? key}) : super(key: key);
+  final String title;
+
+  const ResultPage({Key? key, required this.title}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -32,8 +34,7 @@ class ResultPage extends StatelessWidget {
                       style: AppTextStyles.body,
                       children: [
                         TextSpan(
-                            text: "\nState Management",
-                            style: AppTextStyles.bodyBold),
+                            text: "\n$title", style: AppTextStyles.bodyBold),
                         TextSpan(
                             text: "\nwith 6 correct answers out of 10",
                             style: AppTextStyles.body),
