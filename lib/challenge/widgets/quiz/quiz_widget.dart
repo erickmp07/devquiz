@@ -1,10 +1,12 @@
+import 'package:flutter/material.dart';
 import 'package:DevQuiz/challenge/widgets/answer/answer_widget.dart';
 import 'package:DevQuiz/core/core.dart';
-import 'package:flutter/material.dart';
+import 'package:DevQuiz/shared/models/question_model.dart';
 
 class QuizWidget extends StatelessWidget {
-  final String title;
-  const QuizWidget({Key? key, required this.title}) : super(key: key);
+  final QuestionModel question;
+
+  const QuizWidget({Key? key, required this.question}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,18 +16,18 @@ class QuizWidget extends StatelessWidget {
           SizedBox(
             height: 64,
           ),
-          Text(title, style: AppTextStyles.heading),
+          Text(question.title, style: AppTextStyles.heading),
           SizedBox(
             height: 24,
           ),
-          AnswerWidget(
-              title: "Enables the creation of natively compiled applications"),
-          AnswerWidget(
-              title: "Enables the creation of natively compiled applications"),
-          AnswerWidget(
-              title: "Enables the creation of natively compiled applications"),
-          AnswerWidget(
-              title: "Enables the creation of natively compiled applications"),
+          ...question.answers
+              .map(
+                (answer) => AnswerWidget(
+                  title: answer.title,
+                  isRight: answer.isRight,
+                ),
+              )
+              .toList(),
         ],
       ),
     );
