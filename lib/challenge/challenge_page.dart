@@ -69,7 +69,12 @@ class _ChallengePageState extends State<ChallengePage> {
               Expanded(
                   child: NextButtonWidget.white(
                 label: "Skip",
-                onTap: () {},
+                onTap: () {
+                  pageController.nextPage(
+                    duration: Duration(milliseconds: 100),
+                    curve: Curves.linear,
+                  );
+                },
               )),
               SizedBox(
                 width: 7,
