@@ -1,8 +1,9 @@
-import 'package:DevQuiz/challenge/widgets/next_button/next_button_widget.dart';
-import 'package:DevQuiz/shared/models/question_model.dart';
 import 'package:flutter/material.dart';
+import 'package:DevQuiz/challenge/challenge_controller.dart';
 import 'package:DevQuiz/challenge/widgets/question_indicator/question_indicator_widget.dart';
 import 'package:DevQuiz/challenge/widgets/quiz/quiz_widget.dart';
+import 'package:DevQuiz/challenge/widgets/next_button/next_button_widget.dart';
+import 'package:DevQuiz/shared/models/question_model.dart';
 
 class ChallengePage extends StatefulWidget {
   final List<QuestionModel> questions;
@@ -13,6 +14,8 @@ class ChallengePage extends StatefulWidget {
 }
 
 class _ChallengePageState extends State<ChallengePage> {
+  final challengeController = ChallengeController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,7 +32,10 @@ class _ChallengePageState extends State<ChallengePage> {
                     Navigator.pop(context);
                   },
                 ),
-                QuestionIndicatorWidget(),
+                QuestionIndicatorWidget(
+                  currentPage: challengeController.currentPage,
+                  length: widget.questions.length,
+                ),
               ],
             )),
       ),
