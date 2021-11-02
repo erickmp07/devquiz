@@ -21,7 +21,12 @@ class _ChallengePageState extends State<ChallengePage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                BackButton(),
+                IconButton(
+                  icon: Icon(Icons.close),
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                ),
                 QuestionIndicatorWidget(),
               ],
             )),
