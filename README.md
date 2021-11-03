@@ -46,6 +46,7 @@ This project was developed with the following technologies:
 
 - [Flutter](https://flutter.dev/)
 - [Dart](https://dart.dev/)
+- [Share_Plus](https://github.com/fluttercommunity/plus_plugins)
 
 ## Contributing
 
